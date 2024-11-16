@@ -2,6 +2,7 @@ let map;
 let userMarker;
 let userLocation = [10.775, 106.7]; // Vị trí mặc định
 let restroomMarkers = [];
+let routeLayer; // Layer để vẽ đường dẫn
 
 // Kiểm tra xem trình duyệt có hỗ trợ Geolocation API không
 if (navigator.geolocation) {
@@ -46,6 +47,12 @@ function initializeMap(location) {
       .bindPopup("<b>Your Location</b>")
       .openPopup();
     userLocation = [e.latlng.lat, e.latlng.lng];
+
+    // Xóa route cũ nếu có
+    if (routeLayer) {
+      map.removeLayer(routeLayer);
+      routeLayer = null;
+    }
   });
 
   // Xử lý sự kiện khi nhấn nút tìm kiếm
@@ -70,7 +77,8 @@ function initializeMap(location) {
             .bindPopup(
               `<b>${restroom.address}</b><br>${
                 restroom.description
-              }<br>Distance: ${restroom.distance_km.toFixed(2)} km`
+              }<br>Distance: ${restroom.distance_km.toFixed(2)} km<br>
+              <button onclick="getDirections(${restroom.coordinates[0]}, ${restroom.coordinates[1]})">Đường đi</button>`
             );
           restroomMarkers.push(marker);
         });
@@ -92,6 +100,12 @@ function initializeMap(location) {
             .addTo(map)
             .bindPopup("<b>Your Location</b>")
             .openPopup();
+
+          // Xóa route cũ nếu có
+          if (routeLayer) {
+            map.removeLayer(routeLayer);
+            routeLayer = null;
+          }
         },
         function (error) {
           console.error("Error getting location: ", error);
@@ -101,4 +115,29 @@ function initializeMap(location) {
       console.error("Geolocation is not supported by this browser.");
     }
   });
+}
+
+// Hàm để lấy đường đi từ vị trí người dùng đến nhà vệ sinh được chọn
+function getDirections(lat, lon) {
+  // Xóa các marker cũ
+  restroomMarkers.forEach((marker) => map.removeLayer(marker));
+  restroomMarkers = [];
+
+  // Xóa route cũ nếu có
+  if (routeLayer) {
+    map.removeLayer(routeLayer);
+  }
+
+  // Sử dụng API của OpenRouteService để lấy đường đi
+  fetch(
+    `https://api.openrouteservice.org/v2/directions/driving-car?api_key=${YOUR_API_KEY}&start=${userLocation[1]},${userLocation[0]}&end=${lon},${lat}`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      const coordinates = data.features[0].geometry.coordinates;
+      const latlngs = coordinates.map((coord) => [coord[1], coord[0]]);
+      routeLayer = L.polyline(latlngs, { color: "blue" }).addTo(map);
+      map.fitBounds(routeLayer.getBounds());
+    })
+    .catch((error) => console.error("Error:", error));
 }
