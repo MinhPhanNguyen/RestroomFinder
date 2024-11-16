@@ -1,0 +1,103 @@
+.GoogleMap {
+    border-top-right-radius: 2em;
+    border-bottom-right-radius: 2em;
+    box-shadow: 4px 5px 10px rgba(0, 0, 0, 0.4);
+    height: 100vh;
+    width: 40%;
+    background-color: var(--btn-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2em 2em 2em 0;
+
+    .Container {
+        ul{
+            display: flex;
+            flex-direction: column;
+            color: white;
+
+            .active {
+                scale: 1.05;
+                background-color: white;
+                color: var(--btn-color);
+                border-top-right-radius: 0.8em;
+                border-bottom-right-radius: 0.8em;
+                box-shadow: 4px 0px 10px rgba(255, 255, 255, 0.4);
+                transform: translateY(-5%);
+            }
+
+            li{
+                cursor: pointer;
+                padding: 1.3em 0.8em;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 0.5em;
+                transform: translateY(0);
+
+                svg {
+                    font-size: 2em;
+                }
+
+                h3 {
+                    margin-top: 0.4em;
+                    font-size: 1.2em;
+                }
+            }
+        }
+    }
+
+    p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1em;
+        margin-top: 0.5em;
+        padding: 0.5em 2em;
+        background-color: var(--btn-color);
+        color: white;
+        box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
+        border-radius: 2em;
+
+        svg {
+            margin: 0 0.5em;
+        }
+    }
+
+    .Contain {
+        width: 80%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .Content {
+            cursor: pointer;
+            width: 100%;
+            border-radius: 2em;
+            margin: 1em 0;
+            background-color:white;
+            padding: 1em 2em;
+
+            h3 {
+                color: var(--btn-color);
+            }
+
+            .StautsType {
+                display: flex;
+                align-items: center;
+            }
+
+            .OdoType {
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        .Content:hover {
+            opacity: 0.7;
+            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
+        }
+    }
+}
