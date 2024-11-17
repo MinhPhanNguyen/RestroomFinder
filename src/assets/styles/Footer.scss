@@ -1,0 +1,75 @@
+footer {
+    background-color: var(--title-color);
+    width: 100%;
+    padding: 20px 0;
+    color: white;
+
+    img {
+        height: 40px;
+        width: 40px;
+        border-radius: 100%;
+    }
+
+    img.kiemduyet {
+        border-radius: 0;
+        width: 150px;
+        height: auto;
+    }
+
+    img:hover {
+        opacity: 0.7;
+    }
+
+    h2 {
+        font-size: 1em;
+        margin: 20px 0;
+    }
+
+    li,a {
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        width: 240px;
+        font-size: 0.9em;
+        margin: 20px 0;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+    ul {
+        width: 240px;
+        padding: 0 15px;
+        margin-top: 20px;
+        display: block;
+    }
+
+    .TotalFooter {
+        justify-content: space-between;
+        background-color: transparent;
+        max-width: 1200px;
+        display: flex;
+        margin: 0 auto;
+
+        .Total_1 {
+            width: 370px;
+            li {
+                width: 100%;
+            }
+        }
+
+        .icon {
+            display: flex;
+
+            a {
+                width: 70px;
+            }
+        }
+    }
+
+    p {
+        font-size: 1em;
+        margin: 0 auto;
+        max-width: 1200px;
+        padding-left: 10px;
+    }
+}

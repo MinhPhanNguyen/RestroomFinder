@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-color : #F5f5f5;
+  --bg-color-1 : #FFFFFF;
+  --bg-color-2 : #F7F6FF;
+  --bg-color-3 : #eaf0ef;
+  --txt-color-light: #6f78a5;
+  --txt-color-night: #fff;
+  --btn-color: #008aff; 
+  --title-color: #101c58;
+  --des-color-night: #75C79D;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", Tahoma, Arial, Helvetica;
+  transition: all 0.3s ease-in-out;
+  scroll-behavior: smooth;
+  border: 0;
+  outline: 0px;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+p {
+  font-size: 1em;
+}
+
+li, a {
+  list-style: none;
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+button {
+  padding: 1em 1.5em;
+  border-radius: 5em;
+  margin-right: 1.5em;
+}
