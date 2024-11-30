@@ -14,6 +14,21 @@
   --des-color-night: #75C79D;
 }
 
+::-webkit-scrollbar {
+  width: 0.4vw;
+  height: 100%;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 1em;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--btn-color);
+  border-radius: 1em;
+}
+
 * {
   padding: 0;
   margin: 0;
